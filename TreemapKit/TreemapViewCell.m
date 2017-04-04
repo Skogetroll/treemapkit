@@ -11,28 +11,28 @@
 
 #pragma mark -
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         self.layer.borderWidth = 1.0;
-        self.layer.borderColor = [[UIColor whiteColor] CGColor];
+        self.layer.borderColor = [UIColor whiteColor].CGColor;
 
-        self.textLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)] autorelease];
+        self.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)];
         textLabel.font = [UIFont boldSystemFontOfSize:20];
         textLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-        textLabel.textAlignment = UITextAlignmentCenter;
+        textLabel.textAlignment = NSTextAlignmentCenter;
         textLabel.textColor = [UIColor whiteColor];
         textLabel.backgroundColor = [UIColor clearColor];
-        textLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+        textLabel.lineBreakMode = NSLineBreakByCharWrapping;
         textLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:textLabel];
 
-        self.valueLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)] autorelease];
+        self.valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width - 4, 20)];
         valueLabel.font = [UIFont boldSystemFontOfSize:20];
         valueLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-        valueLabel.textAlignment = UITextAlignmentCenter;
+        valueLabel.textAlignment = NSTextAlignmentCenter;
         valueLabel.textColor = [UIColor whiteColor];
         valueLabel.backgroundColor = [UIColor clearColor];
-        valueLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+        valueLabel.lineBreakMode = NSLineBreakByCharWrapping;
         valueLabel.adjustsFontSizeToFitWidth = YES;
         [self addSubview:valueLabel];
     }
@@ -54,12 +54,5 @@
     }
 }
 
-- (void)dealloc {
-    [valueLabel release];
-    [textLabel release];
-    [delegate release];
-
-    [super dealloc];
-}
 
 @end

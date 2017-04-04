@@ -5,7 +5,7 @@
 	NSMutableArray *fruits;
 }
 
-@property (nonatomic, retain) NSMutableArray *fruits;
+@property (nonatomic, strong) NSMutableArray *fruits;
 
 @end
 

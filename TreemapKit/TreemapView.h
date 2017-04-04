@@ -4,15 +4,17 @@
 @protocol TreemapViewDataSource;
 @protocol TreemapViewDelegate;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TreemapView : UIView <TreemapViewCellDelegate> {
-    id <TreemapViewDataSource> dataSource;
-    id <TreemapViewDelegate> delegate;
+    id <TreemapViewDataSource> _Nullable dataSource;
+    id <TreemapViewDelegate> _Nullable delegate;
 
     BOOL initialized;
 }
 
-@property (nonatomic, retain) IBOutlet id <TreemapViewDataSource> dataSource;
-@property (nonatomic, retain) IBOutlet id <TreemapViewDelegate> delegate;
+@property (nonatomic, retain) IBOutlet id <TreemapViewDataSource> _Nullable dataSource;
+@property (nonatomic, retain) IBOutlet id <TreemapViewDelegate> _Nullable delegate;
 
 - (void)reloadData;
 
@@ -22,10 +24,10 @@
 
 @optional
 
-- (void)treemapView:(TreemapView *)treemapView touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)treemapView:(TreemapView *)treemapView touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)treemapView:(TreemapView *)treemapView touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)treemapView:(TreemapView *)treemapView touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)treemapView:(TreemapView *)treemapView touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+- (void)treemapView:(TreemapView *)treemapView touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+- (void)treemapView:(TreemapView *)treemapView touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
+- (void)treemapView:(TreemapView *)treemapView touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
 - (void)treemapView:(TreemapView *)treemapView tapped:(NSInteger)index;
 - (void)treemapView:(TreemapView *)treemapView updateCell:(TreemapViewCell *)cell forIndex:(NSInteger)index forRect:(CGRect)rect;
 
@@ -33,8 +35,8 @@
 
 @protocol TreemapViewDataSource <NSObject>
 
-- (NSArray *)valuesForTreemapView:(TreemapView *)treemapView;
-- (TreemapViewCell *)treemapView:(TreemapView *)treemapView cellForIndex:(NSInteger)index forRect:(CGRect)rect;
+- (NSArray<NSNumber *> *)valuesForTreemapView:(TreemapView *)treemapView;
+- (TreemapViewCell * _Nullable)treemapView:(TreemapView *)treemapView cellForIndex:(NSInteger)index forRect:(CGRect)rect;
 
 @optional
 
@@ -42,3 +44,5 @@
 - (NSInteger)treemapView:(TreemapView *)treemapView separationPositionForDepth:(NSInteger)depth;
 
 @end
+
+NS_ASSUME_NONNULL_END
